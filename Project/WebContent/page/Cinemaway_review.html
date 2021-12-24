@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰게시판</title>
+    <link rel="stylesheet" href="css/cinema_style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>\
+
+    <!-- 검색창 스크립트 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- 용원씨가 준 그뭐야 영화 가로 정렬 스크립트 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+    <!-- 폰트 스크립트 -->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet"></head>
+
+
+</head>
+<body>
+<!--헤더-->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+  <div class="container">
+
+
+      <!-- 가로 작아질때 메뉴 왼쪽에 三으로 보이게, 게시판 목록과 연결하기 -->
+      <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 三 끝 -->
+
+
+
+      <!-- 로고부분 (나중에 경로수정하기) -->
+      <a href="CinemaWay_main.html" class="navbar-brand logo-image">
+          <img src="images/cinemaway_logo.png" alt="logo"></a> 
+
+      
+
+      <!-- 게시판 목록 -->
+      <div class="collapse navbar-collapse" id="navbarSideCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">영화추천</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                    <li><a class="dropdown-item" href="BudapestHotel.html">추천영화</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="littelForest.html">계절별영화</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="The_Wailing.html">분위기별영화</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">장소추천</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                    <li><a class="dropdown-item" href="#">국내/해외</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="#">계절별영화</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="#">분위기별영화</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">게시판</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                    <li><a class="dropdown-item" href="Cinemaway_review.html">리뷰게시판</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="Cinemaway_pre.html">자유게시판</a></li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li><a class="dropdown-item" href="Cinemaway_QNA1.html">고객센터</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+          <!-- 게시판 목록 끝 -->
+
+
+
+
+      <!-- 검색창 -->
+      <!-- d-inline-flex : 부모영역의 테두리가 자식의 크기에 맞게 줄어듬 자신또한 in-line처럼 배치가능 -->
+          <div class="d-inline-flex justify-content-right">
+              <!-- <div class="col-md-5"> -->
+                  <div class="form">
+                    <!-- 검색 폰트 위치 수정 -->
+                     <i class="fa fa-search" style="transform: translate(-6px,-8px);"></i>
+                     <input type="text" class="form-control form-input" placeholder="작품 또는 장소를 검색해보세요.">
+                     <span class="right-pan"></span>
+                  </div>
+              <!-- </div> -->
+          <!-- </div> -->
+
+          <!-- 검색창 끝 -->
+
+
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav ms-auto navbar-nav-scroll">
+              <li class="nav-item p-3" style="cursor: pointer;" onclick="location.href='Cinemaway_login.html'">로그인
+                  <!-- <a class="nav-link active" aria-current="page" href="Cinemaway_login.html">로그인</a> -->
+              </li>
+          </ul>
+          <span class="nav-item">
+              <a class="btn-outline-sm" href="#">회원가입</a>
+          </span>
+      </div> <!-- end of navbar-collapse -->
+  </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- 네비게이션 끝 -->
+
+
+</div>
+<div class="m-5"><img src="images/자리차지용.jpg" alt=""></div>
+<div class="container gap-2">
+    <div class="row">
+        <div class="col-2">
+          <h5>게시판 선택</h5>
+          <hr>
+          <!--왼쪽 게시판 내 선택상자-->
+          <div class="list-group">
+            <a href="Cinemaway_review.html" class="list-group-item list-group-item-action bg-dark active" aria-current="true">
+              리뷰게시판
+            </a>
+            <a href="Cinemaway_pre.html" class="list-group-item list-group-item-action">자유게시판</a>
+            <a href="Cinemaway_QNA1.html" class="list-group-item list-group-item-action">고객센터</a>
+          </div>
+        </div>
+        <!--게시판 테이블 시작-->
+        <div class="col">
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead>
+                  <h2>리뷰게시판</h2>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">글쓴이</th>
+                    <th scope="col">작성일</th>
+                    <th scope="col">조회수</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onclick="location.href='Cinemaway_review_click.html'">
+                    <th scope="row">1</th>
+                    <td>&#60숨겨진 기적을 만나보세요&#62;</td>
+                    <td>sad****</td>
+                    <td>2021.09.21</td>
+                    <td>10</td>
+                    </a>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>&#91영화감상&#93 007 노 타임 투 다이</td>
+                    <td>kga****</td>
+                    <td>2021.09.11</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>&#91영화 보이스 정보&#38후기&#93</td>
+                    <td>sou****</td>
+                    <td>2021.09.11</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>영화후기 남깁니다</td>
+                    <td>ddd****</td>
+                    <td>2021.09.11</td>
+                    <td>9</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>곡성방문함</td>
+                    <td>fds****</td>
+                    <td>2021.09.11</td>
+                    <td>49</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6</th>
+                    <td>방문후기</td>
+                    <td>lkm****</td>
+                    <td>2021.09.11</td>
+                    <td>33</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">7</th>
+                    <td>방문후기같은거 </td>
+                    <td>nbb****</td>
+                    <td>2021.09.11</td>
+                    <td>25</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">8</th>
+                    <td>영화후기</td>
+                    <td>plm***</td>
+                    <td>2021.09.11</td>
+                    <td>77</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">9</th>
+                    <td>어디갔던후기</td>
+                    <td>adv***</td>
+                    <td>2021.09.11</td>
+                    <td>9</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--글쓰기 버튼 자리 지정-->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-outline-secondary" onclick="location.href='Cinemaway_page_writer.html'"><i class="bi bi-pen"></i>글쓰기</button>
+              </div>
+        </div>
+    </div>
+</div>
+<!--페이지 넘기는 버튼이랑, 검색창-->
+<div class="container">
+  <div class="row m-5">
+    <div class="col-5">
+    </div>
+    <div class="col">
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+          <button type="button" class="btn btn-outline-secondary"><i class="bi bi-chevron-double-left"></i></button>
+          <button type="button" class="btn btn-outline-secondary">1</button>
+          <button type="button" class="btn btn-outline-secondary">2</button>
+          <button type="button" class="btn btn-outline-secondary">3</button>
+          <button type="button" class="btn btn-outline-secondary">4</button>
+          <button type="button" class="btn btn-outline-secondary"><i class="bi bi-chevron-double-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="게시판 내 검색" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+        <button type="button" class="btn btn-outline-secondary"><span class="bi bi-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<footer class="ht-footer full-width-ft">
+	<div class="row">
+		<div class="flex-parent-ft">
+			<div class="flex-child-ft item1">
+				 <a href="#"><img class="logo" src="images/logo1.png" alt=""></a>
+				 <p>비트캠프 | <br>
+                    서울 강남구 강남대로94길 20, 삼오빌딩(5층 ~ 9층)</p>
+				<p>Bitcamp : <a href="#">JAVA 211 B-4</a></p>
+			</div>
+			<div class="flex-child-ft item2">
+				<h4>Resources</h4>
+				<ul>
+					<li><a href="#">서비스 이용약관</a></li> 
+					<li><a href="#">개인정보 처리방침</a></li>
+					<li><a href="#">회사 안내</a></li>
+				</ul>
+			</div>
+            <div class="flex-child-ft item3">
+				<h4>JAVA 211 B-4</h4>
+				<ul>
+                    <p>한용원<br>오석<br>지은혜<br>강다현<br>이영호</p>
+				</ul>
+			</div>
+			<div class="flex-child-ft item4">
+				<h4>Copyright</h4>
+				<p>© 2021 by JAVA 211 B-4, Inc. All rights reserved.</p>
+			</div>
+            <div class="flex-child-ft item5">
+				<h4></h4>
+				<ul>
+				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</footer>
+</body>
+</html>
